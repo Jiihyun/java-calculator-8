@@ -4,30 +4,17 @@ public class CalculatorController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final Calculator calculator;
 
-    public CalculatorController(InputView inputView, OutputView outputView) {
+    public CalculatorController(InputView inputView, OutputView outputView, Calculator calculator) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.calculator = calculator;
     }
 
     public void calculate() {
         String input = inputView.readInput();
-        Numbers numbers = extractNumbers(input);
-        long sum = numbers.sum();
+        long sum = calculator.sum(input);
         outputView.showResult(sum);
-    }
-
-    private Numbers extractNumbers(String input) {
-        NumberExtractor numberExtractor = new NumberExtractor();
-        if (hasCustomDelimiter(input)) {
-            DelimiterExtractor delimiterExtractor = new DelimiterExtractor();
-            String customDelimiter = delimiterExtractor.extract(input);
-            return numberExtractor.extractWith(customDelimiter, input);
-        }
-        return numberExtractor.extract(input);
-    }
-
-    private boolean hasCustomDelimiter(String value) {
-        return value.startsWith("//") && value.contains("\\n");
     }
 }
