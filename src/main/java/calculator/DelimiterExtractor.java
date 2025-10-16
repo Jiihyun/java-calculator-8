@@ -2,12 +2,10 @@ package calculator;
 
 public class DelimiterExtractor {
 
-    private static final String CUSTOM_DELIMITER_END_CONDITION = "\\n";
-    private static final int CUSTOM_DELIMITER_START_INDEX = 2;
-
     public String extract(String value) {
-        int endIndex = value.indexOf(CUSTOM_DELIMITER_END_CONDITION);
-        String delimiter = value.substring(CUSTOM_DELIMITER_START_INDEX, endIndex);
+        int startIndex = Delimiter.CUSTOM_PREFIX.getIndexIn(value);
+        int endIndex = Delimiter.CUSTOM_SUFFIX.getIndexIn(value);
+        String delimiter = value.substring(startIndex, endIndex);
         validate(delimiter);
         return delimiter;
     }
