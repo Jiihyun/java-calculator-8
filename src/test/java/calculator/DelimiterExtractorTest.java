@@ -18,7 +18,7 @@ class DelimiterExtractorTest {
     @Test
     void 커스텀_구분자를_추출할_수_있다() {
         // given
-        String value = "//;\n1;2;3";
+        String value = "//;\\n1;2;3";
         String expectDelimiter = ";";
         // when
         String resultDelimiter = delimiterExtractor.extract(value);
@@ -29,7 +29,7 @@ class DelimiterExtractorTest {
     @Test
     void 커스텀_구분자가_빈문자열이면_예외를_반환한다() {
         // given
-        String value = "// \n1;2;3";
+        String value = "// \\n1;2;3";
         // when & then
         assertThatThrownBy(() -> delimiterExtractor.extract(value))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -39,7 +39,7 @@ class DelimiterExtractorTest {
     @Test
     void 커스텀_구분자에_숫자가_포함되면_예외를_반환한다() {
         // given
-        String value = "//^1^\n1;2;3";
+        String value = "//^1^\\n1;2;3";
         // when & then
         assertThatThrownBy(() -> delimiterExtractor.extract(value))
                 .isInstanceOf(IllegalArgumentException.class)

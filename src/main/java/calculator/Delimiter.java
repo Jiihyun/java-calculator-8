@@ -5,7 +5,7 @@ public enum Delimiter {
     COMMA(","),
     COLON(":"),
     CUSTOM_PREFIX("//"),
-    CUSTOM_SUFFIX("\n");
+    CUSTOM_SUFFIX("\\n");
 
     private String value;
 
