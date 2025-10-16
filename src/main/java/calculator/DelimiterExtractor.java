@@ -3,9 +3,8 @@ package calculator;
 public class DelimiterExtractor {
 
     public String extract(String value) {
-        int startIndex = Delimiter.CUSTOM_PREFIX.getIndexIn(value);
         int endIndex = Delimiter.CUSTOM_SUFFIX.getIndexIn(value);
-        String delimiter = value.substring(startIndex, endIndex);
+        String delimiter = value.substring(Delimiter.CUSTOM_PREFIX.getLength(), endIndex);
         validate(delimiter);
         return delimiter;
     }
