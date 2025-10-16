@@ -37,9 +37,10 @@ public class Numbers {
 
     public long sum() {
         try {
+            long initValue = 0L;
             return numbers.stream()
-                    .reduce(0L, Math::addExact);
-        } catch (ArithmeticException e) {
+                    .reduce(initValue, Math::addExact);
+        } catch (ArithmeticException arithmeticException) {
             throw new IllegalArgumentException("[ERROR] 덧셈 가능한 범위를 초과하였습니다");
         }
     }
