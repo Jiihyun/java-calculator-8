@@ -14,9 +14,10 @@ class CalculatorTest {
 
     @BeforeEach
     void setUp() {
+        DelimiterExtractor delimiterExtractor = new DelimiterExtractor();
+        ExpressionParser expressionParser = new ExpressionParser();
         NumberExtractor numberExtractor = new NumberExtractor();
-        ExpressionParser expressionParser = new ExpressionParser(new DelimiterExtractor());
-        calculator = new Calculator(numberExtractor, expressionParser);
+        calculator = new Calculator(delimiterExtractor, expressionParser, numberExtractor);
     }
 
     @ParameterizedTest

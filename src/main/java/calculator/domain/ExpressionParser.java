@@ -1,24 +1,12 @@
 package calculator.domain;
 
-import java.util.regex.Pattern;
-
 public class ExpressionParser {
 
-    private final DelimiterExtractor delimiterExtractor;
-
-    public ExpressionParser(DelimiterExtractor delimiterExtractor) {
-        this.delimiterExtractor = delimiterExtractor;
-    }
-
-    public ExpressionInfo parse(String expression) {
+    public String parse(String expression) {
         if (Delimiter.isCustom(expression)) {
-            String delimiter = delimiterExtractor.extract(expression);
-            String delimiterPattern = Delimiter.COMMA.getValue() + "|" + Delimiter.COLON.getValue() + "|" + Pattern.quote(delimiter);
-            String parsedExpression = parseCustomFormat(expression);
-            return new ExpressionInfo(parsedExpression, delimiterPattern);
+            return parseCustomFormat(expression);
         }
-        String delimiterPattern = Delimiter.COMMA.getValue() + "|" + Delimiter.COLON.getValue();
-        return new ExpressionInfo(expression, delimiterPattern);
+        return expression;
     }
 
     private String parseCustomFormat(String expression) {

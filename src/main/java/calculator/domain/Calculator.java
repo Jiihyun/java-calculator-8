@@ -2,17 +2,21 @@ package calculator.domain;
 
 public class Calculator {
 
-    private final NumberExtractor numberExtractor;
+    private final DelimiterExtractor delimiterExtractor;
     private final ExpressionParser expressionParser;
+    private final NumberExtractor numberExtractor;
 
-    public Calculator(NumberExtractor numberExtractor, ExpressionParser expressionParser) {
-        this.numberExtractor = numberExtractor;
+    public Calculator(DelimiterExtractor delimiterExtractor, ExpressionParser expressionParser,
+                      NumberExtractor numberExtractor) {
+        this.delimiterExtractor = delimiterExtractor;
         this.expressionParser = expressionParser;
+        this.numberExtractor = numberExtractor;
     }
 
     public long sum(String value) {
-        ExpressionInfo expressionInfo = expressionParser.parse(value);
-        Numbers numbers = numberExtractor.createNumbers(expressionInfo.expression(), expressionInfo.delimiterPattern());
+        String delimiter = delimiterExtractor.extract(value);
+        String expression = expressionParser.parse(value);
+        Numbers numbers = numberExtractor.createNumbers(expression, delimiter);
         return numbers.sum();
     }
 }

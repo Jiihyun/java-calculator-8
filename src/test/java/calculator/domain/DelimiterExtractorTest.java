@@ -46,4 +46,15 @@ class DelimiterExtractorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 커스텀 구분자는 숫자를 포함할 수 없습니다.");
     }
+
+    @Test
+    void 커스텀_구분자가_없으면_빈_문자열을_반환한다() {
+        // given
+        String expression = "1000:5000,2,3";
+        String expectDelimiter = "";
+        // when
+        String resultDelimiter = delimiterExtractor.extract(expression);
+        // then
+        assertThat(resultDelimiter).isEqualTo(expectDelimiter);
+    }
 }

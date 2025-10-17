@@ -2,11 +2,16 @@ package calculator.domain;
 
 public class DelimiterExtractor {
 
+    private static final String EMPTY_STRING = "";
+
     public String extract(String expression) {
-        int endIndex = Delimiter.CUSTOM_SUFFIX.getIndexIn(expression);
-        String delimiter = expression.substring(Delimiter.CUSTOM_PREFIX.getLength(), endIndex);
-        validate(delimiter);
-        return delimiter;
+        if (Delimiter.isCustom(expression)) {
+            int endIndex = Delimiter.CUSTOM_SUFFIX.getIndexIn(expression);
+            String delimiter = expression.substring(Delimiter.CUSTOM_PREFIX.getLength(), endIndex);
+            validate(delimiter);
+            return delimiter;
+        }
+        return EMPTY_STRING;
     }
 
     private void validate(String delimiter) {
