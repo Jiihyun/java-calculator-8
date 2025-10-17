@@ -1,6 +1,7 @@
 package calculator.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Numbers {
 
@@ -43,5 +44,18 @@ public class Numbers {
         } catch (ArithmeticException arithmeticException) {
             throw new IllegalArgumentException("[ERROR] 덧셈 가능한 범위를 초과하였습니다");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Numbers numbers1)) {
+            return false;
+        }
+        return Objects.equals(numbers, numbers1.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(numbers);
     }
 }
