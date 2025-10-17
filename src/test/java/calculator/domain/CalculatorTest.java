@@ -22,6 +22,7 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource({
             "1:2:3:4, 10",
+            "//+\\n1+2+3+4, 10",
             "//&\\n10&20&30, 60",
             "//%\\n10000%200000:3000000, 3210000"
     })
