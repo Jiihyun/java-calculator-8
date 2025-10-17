@@ -1,4 +1,4 @@
-package calculator;
+package calculator.domain;
 
 public record ExpressionInfo(
         String expression,
