@@ -13,6 +13,6 @@ public class Application {
         CalculatorController calculatorController = new CalculatorController(
                 new InputView(), new OutputView(),
                 new Calculator(new NumberExtractor(), new ExpressionParser(new DelimiterExtractor())));
-        calculatorController.calculate();
+        calculatorController.run();
     }
 }
