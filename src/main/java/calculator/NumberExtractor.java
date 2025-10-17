@@ -5,9 +5,9 @@ import java.util.List;
 
 public class NumberExtractor {
 
-    public Numbers createNumbers(String value, String delimiterPattern) {
+    public Numbers createNumbers(String expression, String delimiterPattern) {
         try {
-            List<Long> numbers = Arrays.stream(value.split(delimiterPattern))
+            List<Long> numbers = Arrays.stream(expression.split(delimiterPattern))
                     .map(Long::parseLong)
                     .toList();
             return new Numbers(numbers);

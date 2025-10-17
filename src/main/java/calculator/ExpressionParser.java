@@ -10,19 +10,19 @@ public class ExpressionParser {
         this.delimiterExtractor = delimiterExtractor;
     }
 
-    public ExpressionInfo parse(String value) {
-        if (Delimiter.isCustom(value)) {
-            String delimiter = delimiterExtractor.extract(value);
+    public ExpressionInfo parse(String expression) {
+        if (Delimiter.isCustom(expression)) {
+            String delimiter = delimiterExtractor.extract(expression);
             String delimiterPattern = Delimiter.COMMA + "|" + Delimiter.COLON + "|" + Pattern.quote(delimiter);
-            String parsedValue = parseCustomFormat(value);
-            return new ExpressionInfo(parsedValue, delimiterPattern);
+            String parsedExpression = parseCustomFormat(expression);
+            return new ExpressionInfo(parsedExpression, delimiterPattern);
         }
         String delimiterPattern = Delimiter.COMMA + "|" + Delimiter.COLON;
-        return new ExpressionInfo(value, delimiterPattern);
+        return new ExpressionInfo(expression, delimiterPattern);
     }
 
-    private String parseCustomFormat(String value) {
-        int indexOfSuffix = Delimiter.CUSTOM_SUFFIX.getIndexIn(value);
-        return value.substring(indexOfSuffix + Delimiter.CUSTOM_SUFFIX.getLength());
+    private String parseCustomFormat(String expression) {
+        int indexOfSuffix = Delimiter.CUSTOM_SUFFIX.getIndexIn(expression);
+        return expression.substring(indexOfSuffix + Delimiter.CUSTOM_SUFFIX.getLength());
     }
 }

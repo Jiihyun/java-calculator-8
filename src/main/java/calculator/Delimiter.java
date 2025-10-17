@@ -13,8 +13,8 @@ public enum Delimiter {
         this.value = value;
     }
 
-    public static boolean isCustom(String value) {
-        return value.startsWith(CUSTOM_PREFIX.value) && value.contains(CUSTOM_SUFFIX.value);
+    public static boolean isCustom(String expression) {
+        return expression.startsWith(CUSTOM_PREFIX.value) && expression.contains(CUSTOM_SUFFIX.value);
     }
 
     public int getIndexIn(String value) {

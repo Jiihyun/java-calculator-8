@@ -2,9 +2,9 @@ package calculator;
 
 public class DelimiterExtractor {
 
-    public String extract(String value) {
-        int endIndex = Delimiter.CUSTOM_SUFFIX.getIndexIn(value);
-        String delimiter = value.substring(Delimiter.CUSTOM_PREFIX.getLength(), endIndex);
+    public String extract(String expression) {
+        int endIndex = Delimiter.CUSTOM_SUFFIX.getIndexIn(expression);
+        String delimiter = expression.substring(Delimiter.CUSTOM_PREFIX.getLength(), endIndex);
         validate(delimiter);
         return delimiter;
     }

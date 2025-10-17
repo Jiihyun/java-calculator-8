@@ -12,7 +12,7 @@ public class Calculator {
 
     public long sum(String value) {
         ExpressionInfo expressionInfo = expressionParser.parse(value);
-        Numbers numbers = numberExtractor.createNumbers(expressionInfo.value(), expressionInfo.delimiterPattern());
+        Numbers numbers = numberExtractor.createNumbers(expressionInfo.expression(), expressionInfo.delimiterPattern());
         return numbers.sum();
     }
 }
