@@ -24,4 +24,8 @@ public enum Delimiter {
     public int getLength() {
         return this.value.length();
     }
+
+    public String getValue() {
+        return value;
+    }
 }

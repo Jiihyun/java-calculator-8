@@ -13,11 +13,11 @@ public class ExpressionParser {
     public ExpressionInfo parse(String expression) {
         if (Delimiter.isCustom(expression)) {
             String delimiter = delimiterExtractor.extract(expression);
-            String delimiterPattern = Delimiter.COMMA + "|" + Delimiter.COLON + "|" + Pattern.quote(delimiter);
+            String delimiterPattern = Delimiter.COMMA.getValue() + "|" + Delimiter.COLON.getValue() + "|" + Pattern.quote(delimiter);
             String parsedExpression = parseCustomFormat(expression);
             return new ExpressionInfo(parsedExpression, delimiterPattern);
         }
-        String delimiterPattern = Delimiter.COMMA + "|" + Delimiter.COLON;
+        String delimiterPattern = Delimiter.COMMA.getValue() + "|" + Delimiter.COLON.getValue();
         return new ExpressionInfo(expression, delimiterPattern);
     }
 
