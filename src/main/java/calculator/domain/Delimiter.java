@@ -7,7 +7,7 @@ public enum Delimiter {
     CUSTOM_PREFIX("//"),
     CUSTOM_SUFFIX("\\n");
 
-    private String value;
+    private final String value;
 
     Delimiter(String value) {
         this.value = value;
@@ -17,8 +17,8 @@ public enum Delimiter {
         return expression.startsWith(CUSTOM_PREFIX.value) && expression.contains(CUSTOM_SUFFIX.value);
     }
 
-    public int getIndexIn(String value) {
-        return value.indexOf(this.value);
+    public int getIndexIn(String expression) {
+        return expression.indexOf(this.value);
     }
 
     public int getLength() {
