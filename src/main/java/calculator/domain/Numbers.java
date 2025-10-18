@@ -47,11 +47,11 @@ public class Numbers {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Numbers numbers1)) {
+    public final boolean equals(final Object o) {
+        if (!(o instanceof final Numbers other)) {
             return false;
         }
-        return Objects.equals(numbers, numbers1.numbers);
+        return Objects.equals(numbers, other.numbers);
     }
 
     @Override
