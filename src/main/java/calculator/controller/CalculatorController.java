@@ -17,8 +17,8 @@ public class CalculatorController {
     }
 
     public void run() {
-        String input = inputView.readInput();
-        long sum = calculator.sum(input);
+        String expression = inputView.readInput();
+        long sum = calculator.sum(expression);
         outputView.showResult(sum);
     }
 }
