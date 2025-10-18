@@ -1,6 +1,6 @@
 package calculator.controller;
 
-import calculator.domain.Calculator;
+import calculator.facade.CalculatorFacade;
 import calculator.view.InputView;
 import calculator.view.OutputView;
 
@@ -8,17 +8,17 @@ public class CalculatorController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final Calculator calculator;
+    private final CalculatorFacade calculatorFacade;
 
-    public CalculatorController(InputView inputView, OutputView outputView, Calculator calculator) {
+    public CalculatorController(InputView inputView, OutputView outputView, CalculatorFacade calculatorFacade) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.calculator = calculator;
+        this.calculatorFacade = calculatorFacade;
     }
 
     public void run() {
         String expression = inputView.readInput();
-        long sum = calculator.sum(expression);
+        long sum = calculatorFacade.sum(expression);
         outputView.showResult(sum);
     }
 }

@@ -1,13 +1,18 @@
-package calculator.domain;
+package calculator.facade;
 
-public class Calculator {
+import calculator.domain.DelimiterExtractor;
+import calculator.domain.ExpressionParser;
+import calculator.domain.NumberExtractor;
+import calculator.domain.Numbers;
+
+public class CalculatorFacade {
 
     private final DelimiterExtractor delimiterExtractor;
     private final ExpressionParser expressionParser;
     private final NumberExtractor numberExtractor;
 
-    public Calculator(DelimiterExtractor delimiterExtractor, ExpressionParser expressionParser,
-                      NumberExtractor numberExtractor) {
+    public CalculatorFacade(DelimiterExtractor delimiterExtractor, ExpressionParser expressionParser,
+                            NumberExtractor numberExtractor) {
         this.delimiterExtractor = delimiterExtractor;
         this.expressionParser = expressionParser;
         this.numberExtractor = numberExtractor;

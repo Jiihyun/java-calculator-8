@@ -1,10 +1,10 @@
 package calculator;
 
 import calculator.controller.CalculatorController;
-import calculator.domain.Calculator;
 import calculator.domain.DelimiterExtractor;
 import calculator.domain.ExpressionParser;
 import calculator.domain.NumberExtractor;
+import calculator.facade.CalculatorFacade;
 import calculator.view.InputView;
 import calculator.view.OutputView;
 
@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) {
         CalculatorController calculatorController = new CalculatorController(
                 new InputView(), new OutputView(),
-                new Calculator(new DelimiterExtractor(), new ExpressionParser(), new NumberExtractor()));
+                new CalculatorFacade(new DelimiterExtractor(), new ExpressionParser(), new NumberExtractor()));
         calculatorController.run();
     }
 }
