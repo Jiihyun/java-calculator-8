@@ -20,8 +20,16 @@ public class NumberExtractor {
 
     private String createRegex(String delimiter) {
         if (delimiter.isBlank()) {
-            return Delimiter.COMMA.getValue() + "|" + Delimiter.COLON.getValue();
+            return createDefaultDelimiterRegex();
         }
+        return createCustomDelimiterRegex(delimiter);
+    }
+
+    private String createDefaultDelimiterRegex() {
+        return Delimiter.COMMA.getValue() + "|" + Delimiter.COLON.getValue();
+    }
+
+    private String createCustomDelimiterRegex(String delimiter) {
         return Delimiter.COMMA.getValue() + "|" + Delimiter.COLON.getValue() + "|" + Pattern.quote(delimiter);
     }
 }
