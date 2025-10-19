@@ -26,14 +26,14 @@ class DelimiterTest {
     @Test
     void 표현식_내_구분자의_인덱스를_구할_수_있다() {
         //given
-        String expression = "//@@\\n1@@2";
+        String expression = "//@\\n1@2";
         // when
         int prefixIndex = Delimiter.CUSTOM_PREFIX.getIndexIn(expression);
         int suffixIndex = Delimiter.CUSTOM_SUFFIX.getIndexIn(expression);
         // then
         assertAll(
                 () -> assertThat(prefixIndex).isZero(),
-                () -> assertThat(suffixIndex).isEqualTo(4)
+                () -> assertThat(suffixIndex).isEqualTo(3)
         );
     }
 }

@@ -20,8 +20,8 @@ class DelimiterExtractorTest {
     @Test
     void 커스텀_구분자를_추출할_수_있다() {
         // given
-        String expression = "//[plus]\\n1[plus]2[plus]3";
-        String expectDelimiter = "[plus]";
+        String expression = "//ㅇ\\n1ㅇ2ㅇ3";
+        String expectDelimiter = "ㅇ";
         // when
         String resultDelimiter = delimiterExtractor.extract(expression);
         // then
@@ -40,7 +40,7 @@ class DelimiterExtractorTest {
     @Test
     void 커스텀_구분자에_숫자가_포함되면_예외를_반환한다() {
         // given
-        String expression = "//^1^\\n1;2;3";
+        String expression = "//1\\n51213";
         // when & then
         assertThatThrownBy(() -> delimiterExtractor.extract(expression))
                 .isInstanceOf(IllegalArgumentException.class)
